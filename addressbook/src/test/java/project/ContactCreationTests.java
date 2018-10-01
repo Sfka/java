@@ -30,8 +30,10 @@ public class ContactCreationTests {
   @Test
   public void testContactCreation() {
       initContactCreation();
-      fillContactForm();
+      fillContactForm(new ContactData("Ivan", "Ivanov", "street","32111111", "123456@mail.com"));
       submitContactCreation();
+      gotoHomePage();
+      logout();
   }
     private void initContactCreation() {
         wd.findElement(By.linkText("add new")).click();
@@ -41,17 +43,26 @@ public class ContactCreationTests {
         wd.findElement(By.cssSelector("input[name=\"submit\"]")).click();
     }
 
-    private void fillContactForm() {
+    private void fillContactForm(ContactData contactData) {
         wd.findElement(By.cssSelector("input[name=\"firstname\"]")).clear();
-        wd.findElement(By.cssSelector("input[name=\"firstname\"]")).sendKeys("Ivan");
+        wd.findElement(By.cssSelector("input[name=\"firstname\"]")).sendKeys(contactData.getFirstName());
         wd.findElement(By.cssSelector("input[name=\"lastname\"]")).clear();
-        wd.findElement(By.cssSelector("input[name=\"lastname\"]")).sendKeys("Ivanov");
+        wd.findElement(By.cssSelector("input[name=\"lastname\"]")).sendKeys(contactData.getLastName());
+        wd.findElement(By.cssSelector("textarea[name=\"address\"]")).clear();
+        wd.findElement(By.cssSelector("textarea[name=\"address\"]")).sendKeys(contactData.getAddress());
         wd.findElement(By.cssSelector("input[name=\"mobile\"]")).clear();
-        wd.findElement(By.cssSelector("input[name=\"mobile\"]")).sendKeys("123456789");
+        wd.findElement(By.cssSelector("input[name=\"mobile\"]")).sendKeys(contactData.getMobile());
         wd.findElement(By.cssSelector("input[name=\"email\"]")).clear();
-        wd.findElement(By.cssSelector("input[name=\"email\"]")).sendKeys("1234@mail.com");
+        wd.findElement(By.cssSelector("input[name=\"email\"]")).sendKeys(contactData.getEmail());
     }
 
+    private void gotoHomePage() {
+        wd.findElement(By.linkText("home")).click();
+    }
+
+    private void logout() {
+        wd.findElement(By.linkText("Logout")).click();
+    }
 
     @AfterClass(alwaysRun = true)
   public void tearDown() throws Exception {

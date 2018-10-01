@@ -41,10 +41,6 @@ public class GroupCreationTests {
     logout();
   }
 
-  private void logout() {
-    wd.findElement(By.linkText("Logout")).click();
-  }
-
   private void returnToGroupPage() {
     wd.findElement(By.linkText("group page")).click();
   }
@@ -71,6 +67,10 @@ public class GroupCreationTests {
 
   private void gotoGroupPage() {
     wd.findElement(By.linkText("groups")).click();
+  }
+
+  private void logout() {
+    wd.findElement(By.linkText("Logout")).click();
   }
 
   @AfterMethod(alwaysRun = true)
