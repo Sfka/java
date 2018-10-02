@@ -1,6 +1,5 @@
 package project.appmanager;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.concurrent.TimeUnit;
@@ -24,7 +23,7 @@ public class ApplicationManager {
 
 
     public void logout() {
-     wd.findElement(By.linkText("Logout")).click();
+        sessionHelper.logout();
     }
 
     public void stop() {
