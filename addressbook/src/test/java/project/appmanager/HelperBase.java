@@ -29,8 +29,7 @@ public class HelperBase {
         try {
             wd.switchTo().alert();
             return true;
-        }
-            catch (NoAlertPresentException e) {
+        } catch (NoAlertPresentException e) {
             return false;
         }
     }
