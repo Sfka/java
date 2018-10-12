@@ -2,7 +2,8 @@ package project.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import project.model.ContactData;
 
 
@@ -13,12 +14,18 @@ public class ContactHelper extends HelperBase {
 
     public void initContactCreation() {click(By.linkText("add new"));}
 
-    public void fillContactForm(ContactData contactData) {
+    public void fillContactForm(ContactData contactData, boolean creation) {
         type(By.cssSelector("input[name=\"firstname\"]"), contactData.getFirstName());
         type(By.cssSelector("input[name=\"lastname\"]"), contactData.getLastName());
         type(By.cssSelector("textarea[name=\"address\"]"), contactData.getAddress());
         type(By.cssSelector("input[name=\"mobile\"]"), contactData.getMobile());
         type(By.cssSelector("input[name=\"email\"]"), contactData.getEmail());
+
+        if (creation) {
+            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+        } else {
+            Assert.assertFalse(isElementPresent(By.name("new_group")));
+        }
     }
 
     public void submitContactCreation(){
