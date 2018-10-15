@@ -32,10 +32,6 @@ public class ContactHelper extends HelperBase {
         click (By.cssSelector("input[name=\"submit\"]"));
     }
 
-    public void gotoHomePage() {
-        click(By.linkText("home"));
-    }
-
     public void initContactModification(){
         click(By.xpath("//img[@alt='Edit']"));
     }
