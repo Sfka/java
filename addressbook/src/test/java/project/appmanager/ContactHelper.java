@@ -8,11 +8,14 @@ import project.model.ContactData;
 
 
 public class ContactHelper extends HelperBase {
-    public ContactHelper(WebDriver wd){
+
+    public ContactHelper(WebDriver wd) {
         super(wd);
     }
 
-    public void initContactCreation() {click(By.linkText("add new"));}
+    public void initContactCreation() {
+        click(By.linkText("add new"));
+    }
 
     public void fillContactForm(ContactData contactData, boolean creation) {
         type(By.cssSelector("input[name=\"firstname\"]"), contactData.getFirstName());
@@ -28,11 +31,11 @@ public class ContactHelper extends HelperBase {
         }
     }
 
-    public void submitContactCreation(){
-        click (By.cssSelector("input[name=\"submit\"]"));
+    public void submitContactCreation() {
+        click(By.cssSelector("input[name=\"submit\"]"));
     }
 
-    public void initContactModification(){
+    public void initContactModification() {
         click(By.xpath("//img[@alt='Edit']"));
     }
 
@@ -48,8 +51,26 @@ public class ContactHelper extends HelperBase {
         click(By.xpath("//input[@value='Delete']"));
     }
 
-    public void acceptDeleteContact(){
+    public void acceptDeleteContact() {
         wd.switchTo().alert().accept();
+    }
+
+    public boolean isThereAContact() {
+        return isElementPresent(By.name("selected[]"));
+    }
+
+    public void createContact(ContactData contact) {
+        initContactCreation();
+        fillContactForm(new ContactData("Ivan", "Ivanov", "street","32111111", "123456@mail.com", "test1"), true);
+        submitContactCreation();
+        gotoHomePage();
+    }
+
+    public void gotoHomePage() {
+        if (isElementPresent(By.id("maintable"))) {
+            return;
+        }
+        click(By.linkText("home"));
     }
 }
 

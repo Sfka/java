@@ -8,14 +8,15 @@ public class ContactData {
     private final String email;
     private String group;
 
-    public ContactData(String FirstName, String LastName, String Address, String Mobile, String Email, String group) {
-        firstName = FirstName;
-        lastName = LastName;
-        address = Address;
-        mobile = Mobile;
-        email = Email;
+    public ContactData(String FirstName,String LastName, String Address, String Mobile, String Email, String group) {
+        this.firstName = FirstName;
+        this.lastName = LastName;
+        this.address = Address;
+        this.mobile = Mobile;
+        this.email = Email;
         this.group = group;
     }
+
 
     public String getFirstName() {
         return firstName;
