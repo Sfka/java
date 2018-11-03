@@ -44,7 +44,7 @@ public class ContactHelper extends HelperBase {
     }
 
     public void submitContactModification() {
-        click(By.xpath("//input[@name='update']"));
+        click(By.name("update"));
     }
 
     public void selectContact(int index) {
@@ -63,9 +63,9 @@ public class ContactHelper extends HelperBase {
         return isElementPresent(By.name("selected[]"));
     }
 
-    public void createContact(ContactData contact, boolean t) {
+    public void createContact(ContactData contactData, boolean t) {
         initContactCreation();
-        fillContactForm(contact, t);
+        fillContactForm(contactData, t);
         submitContactCreation();
         gotoHomePage();
     }
@@ -81,14 +81,13 @@ public class ContactHelper extends HelperBase {
         List<ContactData> contacts = new ArrayList<>();
         List<WebElement> elements = wd.findElements(By.name("entry"));
         for (WebElement element : elements) {
-            String firstName = element.getText();
-            String lastName = element.getText();
-            String address = element.getText();
-            String mobile = element.getText();
-            String email = element.getText();
-            String group = element.getText();
+            List<WebElement> entryparts = element.findElements(By.tagName("td"));
+            List<String> strings = new ArrayList<>();
+            for (WebElement el2 : entryparts) strings.add(el2.getText());
+            String firstName = strings.get(2);
+            String lastName = strings.get(1);
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            ContactData contact = new ContactData(id, firstName, lastName, address, mobile, email,group);
+            ContactData contact = new ContactData(id,firstName, lastName, null, null, null, null);
             contacts.add(contact);
         }
         return contacts;
