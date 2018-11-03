@@ -63,9 +63,9 @@ public class ContactHelper extends HelperBase {
         return isElementPresent(By.name("selected[]"));
     }
 
-    public void createContact(ContactData contact) {
+    public void createContact(ContactData contact, boolean t) {
         initContactCreation();
-        fillContactForm(new ContactData("Ivan", "Ivanov", "street","32111111", "123456@mail.com", "test1"), true);
+        fillContactForm(contact, t);
         submitContactCreation();
         gotoHomePage();
     }
@@ -78,12 +78,17 @@ public class ContactHelper extends HelperBase {
     }
 
     public List<ContactData> getContactList() {
-        List<ContactData> contacts = new ArrayList<ContactData>();
-        List<WebElement> elements = wd.findElements(By.cssSelector("td center"));
+        List<ContactData> contacts = new ArrayList<>();
+        List<WebElement> elements = wd.findElements(By.name("entry"));
         for (WebElement element : elements) {
-            String name = element.getText();
+            String firstName = element.getText();
+            String lastName = element.getText();
+            String address = element.getText();
+            String mobile = element.getText();
+            String email = element.getText();
+            String group = element.getText();
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            ContactData contact = new ContactData(id, name, null, null, null, null, null);
+            ContactData contact = new ContactData(id, firstName, lastName, address, mobile, email,group);
             contacts.add(contact);
         }
         return contacts;
