@@ -3,40 +3,54 @@ package project.model;
 import java.util.Objects;
 
 public class ContactData {
-    private int id;
-    private final String firstName;
-    private final String lastName;
-    private final String address;
-    private final String mobile;
-    private final String email;
+    private int id = Integer.MAX_VALUE;
+    private String firstName;
+    private String lastName;
+    private String address;
+    private String mobile;
+    private String email;
     private String group;
-
-    public ContactData(String FirstName,String LastName, String Address, String Mobile, String Email, String group) {
-        this.id = Integer.MAX_VALUE;
-        this.firstName = FirstName;
-        this.lastName = LastName;
-        this.address = Address;
-        this.mobile = Mobile;
-        this.email = Email;
-        this.group = group;
-    }
-    public ContactData(int id, String FirstName,String LastName, String Address, String Mobile, String Email, String group) {
-        this.id = id;
-        this.firstName = FirstName;
-        this.lastName = LastName;
-        this.address = Address;
-        this.mobile = Mobile;
-        this.email = Email;
-        this.group = group;
-    }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public ContactData withId(int id) {
         this.id = id;
+        return this;
     }
+
+
+    public ContactData withFirstName(String firstName) {
+        this.firstName = firstName;
+        return this;
+    }
+
+    public ContactData withLastName(String lastName) {
+        this.lastName = lastName;
+        return this;
+    }
+
+    public ContactData withAddress(String address) {
+        this.address = address;
+        return this;
+    }
+
+    public ContactData withMobile(String mobile) {
+        this.mobile = mobile;
+        return this;
+    }
+
+    public ContactData withEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public ContactData withGroup(String group) {
+        this.group = group;
+        return this;
+    }
+
     public String getFirstName() {
         return firstName;
     }
