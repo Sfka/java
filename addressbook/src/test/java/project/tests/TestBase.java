@@ -1,21 +1,21 @@
 package project.tests;
 
 import org.openqa.selenium.remote.BrowserType;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
 import project.appmanager.ApplicationManager;
 
 
 public class TestBase {
 
-    protected final ApplicationManager app = new ApplicationManager(BrowserType.FIREFOX);
+    protected static final ApplicationManager app = new ApplicationManager(BrowserType.FIREFOX);
 
-    @BeforeMethod
+    @BeforeSuite //suite (vsegda odin) - test - class - method
     public void setUp() throws Exception {
         app.init();
     }
 
-    @AfterMethod
+    @AfterSuite
     public void tearDown() throws Exception {
         app.stop();
     }
