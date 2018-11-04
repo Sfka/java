@@ -70,6 +70,13 @@ public class ContactHelper extends HelperBase {
         gotoHomePage();
     }
 
+    public void modifyContact(int index, ContactData contact) {
+        selectContact(index);
+        initContactModification();
+        fillContactForm(contact, false);
+        submitContactModification();
+    }
+
     public void gotoHomePage() {
         if (isElementPresent(By.id("maintable"))) {
             return;
