@@ -92,8 +92,12 @@ public class ContactHelper extends HelperBase {
             for (WebElement el2 : entryparts) strings.add(el2.getText());
             String firstName = strings.get(2);
             String lastName = strings.get(1);
+            String address = strings.get(3);
+            String email = strings.get(4);
+            String mobile = strings.get(5);
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            contacts.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName));
+            contacts.add(new ContactData().withId(id).withFirstName(firstName)
+                    .withLastName(lastName).withAddress(address).withEmail(email).withMobile(mobile));
         }
         return contacts;
     }
