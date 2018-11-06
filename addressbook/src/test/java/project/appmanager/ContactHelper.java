@@ -86,6 +86,10 @@ public class ContactHelper extends HelperBase {
         click(By.linkText("home"));
     }
 
+    public int Count() {
+        return wd.findElements(By.name("selected[]")).size();
+    }
+
     private Contacts contactCache = null;
 
     public Contacts all() {
