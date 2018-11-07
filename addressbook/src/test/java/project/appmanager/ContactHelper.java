@@ -116,12 +116,14 @@ public class ContactHelper extends HelperBase {
         initContactModificationById(contact.getId());
         String firstName = wd.findElement(By.name("firstname")).getAttribute("value");
         String lastName = wd.findElement(By.name("lastname")).getAttribute("value");
+        String address = wd.findElement(By.name("address")).getAttribute("value");
+        String email = wd.findElement(By.name("email")).getAttribute("value");
         String home = wd.findElement(By.name("home")).getAttribute("value");
         String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
         String work = wd.findElement(By.name("work")).getAttribute("value");
         wd.navigate().back();
-        return new ContactData().withId(contact.getId()).withFirstName(firstName).withFirstName(lastName)
-                .withHomephone(home).withMobile(mobile).withWorkPhone(work);
+        return new ContactData().withId(contact.getId()).withFirstName(firstName).withFirstName(lastName).withAddress(address)
+                .withEmail(email).withHomephone(home).withMobile(mobile).withWorkPhone(work);
 
     }
 }
