@@ -22,7 +22,7 @@ public class ContactEmailTests extends TestBase {
     private String mergeEmail(ContactData contact) {
         return Arrays.asList(contact.getEmail())
                 .stream()
-                .map(ContactAddressTests::cleaned)
+                .map(ContactEmailTests::cleaned)
                 .collect(Collectors.joining(""));
     }
 
