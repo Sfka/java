@@ -104,10 +104,10 @@ public class ContactHelper extends HelperBase {
             String lastName = entryparts.get(1).getText();
             String address = entryparts.get(3).getText();
             String email = entryparts.get(4).getText();
-            String[] phones = entryparts.get(5).getText().split("\n");
+            String allPhones = entryparts.get(5).getText();
             contactCache.add(new ContactData().withId(id).withFirstName(firstName)
                     .withLastName(lastName).withAddress(address).withEmail(email)
-                    .withHomephone(phones[0]).withMobile(phones[1]).withWorkPhone(phones[2]));
+                    .withAllPhones(allPhones));
         }
         return new Contacts(contactCache);
     }
