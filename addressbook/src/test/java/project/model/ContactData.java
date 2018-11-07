@@ -85,6 +85,14 @@ public class ContactData {
         return group;
     }
 
+    public String getHome() {
+        return home;
+    }
+
+    public String getWork() {
+        return work;
+    }
+
     @Override
     public String toString() {
         return "ContactData{" +
