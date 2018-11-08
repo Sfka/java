@@ -54,5 +54,4 @@ public class GroupDataGenerator {
         }
         writer.close();
     }
-
 }
