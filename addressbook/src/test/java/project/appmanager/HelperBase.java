@@ -1,8 +1,11 @@
 package project.appmanager;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+
+import java.io.File;
 
 public class HelperBase {
     protected WebDriver wd;
@@ -24,6 +27,12 @@ public class HelperBase {
                 wd.findElement(locator).sendKeys(text);
             }
         }
+    }
+
+    protected void attache (By locator, File file) {
+        if (file != null){
+            wd.findElement(locator).sendKeys(file.getAbsolutePath());
+            }
     }
 
     public boolean isAlertPresent() {
