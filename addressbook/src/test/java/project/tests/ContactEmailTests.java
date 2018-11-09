@@ -16,14 +16,14 @@ public class ContactEmailTests extends TestBase {
         ContactData contact = app.contact().all().iterator().next();
         ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
-        assertThat(contact.getEmail(), equalTo(mergeEmail(contactInfoFromEditForm)));
+        assertThat(contact.getAllEmails(), equalTo(mergeEmails(contactInfoFromEditForm)));
     }
 
-    private String mergeEmail(ContactData contact) {
-        return Arrays.asList(contact.getEmail())
-                .stream()
+    private String mergeEmails(ContactData contact) {
+        return Arrays.asList(contact.getEmail(), contact.getEmail2(), contact.getEmail3())
+                .stream().filter((s) -> ! s.equals(""))
                 .map(ContactEmailTests::cleaned)
-                .collect(Collectors.joining(""));
+                .collect(Collectors.joining("\n"));
     }
 
     public static String cleaned(String email) {

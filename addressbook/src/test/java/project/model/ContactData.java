@@ -10,10 +10,13 @@ public class ContactData {
     private String address;
     private String mobile;
     private String email;
+    private String email2;
+    private String email3;
     private String group;
     private String home;
     private String work;
     private String allPhones;
+    private String allEmails;
     private File photo;
 
     public File getPhoto() {
@@ -35,6 +38,15 @@ public class ContactData {
         return this;
     }
 
+    public String getAllEmails() {
+        return allEmails;
+    }
+
+    public ContactData withallEmails(String allEmails) {
+        this.allEmails = allEmails;
+        return this;
+    }
+
     public int getId() {
         return id;
     }
@@ -43,7 +55,6 @@ public class ContactData {
         this.id = id;
         return this;
     }
-
 
     public ContactData withFirstName(String firstName) {
         this.firstName = firstName;
@@ -60,13 +71,21 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withMobile(String mobile) {
-        this.mobile = mobile;
+    public ContactData withEmail(String email) {
+        this.email = email;
+        return this;
+    }
+    public ContactData withEmail2(String email2) {
+        this.email2 = email2;
         return this;
     }
 
-    public ContactData withEmail(String email) {
-        this.email = email;
+    public ContactData withEmail3(String email3) {
+        this.email3 = email3;
+        return this;
+    }
+    public ContactData withMobile(String mobile) {
+        this.mobile = mobile;
         return this;
     }
 
@@ -103,6 +122,10 @@ public class ContactData {
         return email;
     }
 
+    public String getEmail2() {return email2;}
+
+    public String getEmail3() {return email3;}
+
     public String getGroup() {
         return group;
     }
@@ -124,7 +147,13 @@ public class ContactData {
                 ", address='" + address + '\'' +
                 ", mobile='" + mobile + '\'' +
                 ", email='" + email + '\'' +
+                ", email2='" + email2 + '\'' +
+                ", email3='" + email3 + '\'' +
                 ", group='" + group + '\'' +
+                ", home='" + home + '\'' +
+                ", work='" + work + '\'' +
+                ", allPhones='" + allPhones + '\'' +
+                ", allEmails='" + allEmails + '\'' +
                 '}';
     }
 
@@ -137,15 +166,15 @@ public class ContactData {
                 Objects.equals(firstName, that.firstName) &&
                 Objects.equals(lastName, that.lastName) &&
                 Objects.equals(address, that.address) &&
-                Objects.equals(mobile, that.mobile) &&
-                Objects.equals(email, that.email) &&
-                Objects.equals(group, that.group);
+                Objects.equals(group, that.group) &&
+                Objects.equals(home, that.home) &&
+                Objects.equals(work, that.work) &&
+                Objects.equals(allPhones, that.allPhones) &&
+                Objects.equals(allEmails, that.allEmails);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, address, mobile, email, group);
+        return Objects.hash(id, firstName, lastName, address, mobile, email, email2, email3, group, home, work, allPhones, allEmails);
     }
-
-
 }
