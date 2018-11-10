@@ -1,5 +1,7 @@
 package project.model;
 
+import java.util.Objects;
+
 public class GroupData {
     private int id = Integer.MAX_VALUE;
     private String name;
@@ -56,18 +58,15 @@ public class GroupData {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         GroupData groupData = (GroupData) o;
-
-        if (id != groupData.id) return false;
-        return name != null ? name.equals(groupData.name) : groupData.name == null;
+        return Objects.equals(name, groupData.name) &&
+                Objects.equals(header, groupData.header) &&
+                Objects.equals(footer, groupData.footer);
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        return result;
+        return Objects.hash(name, header, footer);
     }
 }
 
