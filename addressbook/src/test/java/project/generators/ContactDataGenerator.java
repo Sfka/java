@@ -53,22 +53,22 @@ public class ContactDataGenerator {
         }
     }
 
-        private void saveAsJson(List<ContactData> contacts, File file) throws IOException {
-            Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
-            String json = gson.toJson(contacts);
-            Writer writer = new FileWriter(file);
+    private void saveAsJson(List<ContactData> contacts, File file) throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
+        String json = gson.toJson(contacts);
+        try (Writer writer = new FileWriter(file)) {
             writer.write(json);
-            writer.close();
         }
+    }
 
-        private void saveAsXml(List<ContactData> contacts, File file) throws IOException {
-            XStream xstream = new XStream();
-            xstream.processAnnotations(ContactData.class);
-            String xml = xstream.toXML(contacts);
-            Writer writer = new FileWriter(file);
+    private void saveAsXml(List<ContactData> contacts, File file) throws IOException {
+        XStream xstream = new XStream();
+        xstream.processAnnotations(ContactData.class);
+        String xml = xstream.toXML(contacts);
+        try (Writer writer = new FileWriter(file)) {
             writer.write(xml);
-            writer.close();
         }
+    }
 
     private List<ContactData> generateContacts(int count) {
         List<ContactData> contacts = new ArrayList<ContactData>();
@@ -80,12 +80,12 @@ public class ContactDataGenerator {
         return contacts;
     }
 
-        private void saveAsCsv(List<ContactData> contacts, File file) throws IOException {
-        Writer writer = new FileWriter(file);
-        for (ContactData contact : contacts) {
-            writer.write(String.format("%s;%s;%s\n", contact.getFirstName(),contact.getLastName(),
-                    contact.getAddress(), contact.getEmail()));
+    private void saveAsCsv(List<ContactData> contacts, File file) throws IOException {
+        try (Writer writer = new FileWriter(file)) {
+            for (ContactData contact : contacts) {
+                writer.write(String.format("%s;%s;%s\n", contact.getFirstName(),contact.getLastName(),
+                        contact.getAddress(), contact.getEmail()));
+            }
         }
-        writer.close();
     }
 }
