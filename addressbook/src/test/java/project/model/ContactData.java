@@ -1,12 +1,21 @@
 package project.model;
 
+import com.google.gson.annotations.Expose;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
 import java.io.File;
 import java.util.Objects;
 
+@XStreamAlias("contact")
 public class ContactData {
+    @XStreamOmitField //пропускает поле id и не добавляет его в xml файл
     private int id = Integer.MAX_VALUE;
+    @Expose //помечаем те поля, которые должны быть добавлены в json
     private String firstName;
+    @Expose //помечаем те поля, которые должны быть добавлены в json
     private String lastName;
+    @Expose //помечаем те поля, которые должны быть добавлены в json
     private String address;
     private String mobile;
     private String email;
