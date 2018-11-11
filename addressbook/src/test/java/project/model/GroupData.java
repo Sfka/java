@@ -1,5 +1,6 @@
 package project.model;
 
+import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
@@ -9,8 +10,11 @@ import java.util.Objects;
 public class GroupData {
     @XStreamOmitField //пропускает поле id и не добавляет его в xml файл
     private int id = Integer.MAX_VALUE;
+    @Expose //помечаем те поля, которые должны быть добавлены в json
     private String name;
+    @Expose
     private String header;
+    @Expose
     private String footer;
 
     public int getId() {
