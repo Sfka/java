@@ -8,10 +8,4 @@
             <class name="project.tests.GroupDeletionTests" />
         </classes>
     </test>
-
-    <test name="Contacts">
-        <classes>
-            <class name="project.tests.ContactCreationTests" />
-        </classes>
-    </test>
 </suite>
