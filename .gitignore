@@ -14,3 +14,19 @@ gradle-app.setting
 # gradle/wrapper/gradle-wrapper.properties
 .idea/workspace.xml
 *.log
+addressbook/build/tmp/testContacts/jar_extract_907604906409462006_tmp
+addressbook/build/tmp/testContacts/jar_extract_9020497778762769782_tmp
+addressbook/build/tmp/testContacts/jar_extract_618562206799647489_tmp
+addressbook/build/tmp/testContacts/jar_extract_6150412832313391044_tmp
+addressbook/build/tmp/testContacts/jar_extract_6113001049504161089_tmp
+addressbook/build/tmp/testContacts/jar_extract_2782555598405194806_tmp
+addressbook/build/tmp/testContacts/jar_extract_2150501954653051008_tmp
+addressbook/build/tmp/testContacts/jar_extract_1971203807862217494_tmp
+addressbook/build/tmp/testContacts/jar_extract_1033289968442626354_tmp
+addressbook/build/test-results/testContacts/binary/output.bin
+addressbook/build/test-results/testContacts/binary/output.bin.idx
+addressbook/build/test-results/testContacts/binary/results.bin
+addressbook/build/reports/tests/testContacts/js/report.js
+addressbook/build/reports/tests/testContacts/index.html
+addressbook/build/reports/tests/testContacts/css/style.css
+addressbook/build/reports/tests/testContacts/css/base-style.css
